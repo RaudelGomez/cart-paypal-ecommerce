@@ -1,0 +1,22 @@
+//Colors
+$mainColor: darkblue;
+$redColor: rgb(235, 5, 5);
+
+.d-center{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.d-none{
+  display: none;
+}
+
+.padding-app-lateral{
+  padding-left: 48px;
+  padding-right: 48px;
+}
+
+.width-app{
+  max-width: 1920px;
+}

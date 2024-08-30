@@ -1,0 +1,11 @@
+@import '../../../helpers.scss';
+
+footer{
+  @extend .d-center;
+  @extend .padding-app-lateral;
+  justify-content: space-between;
+  min-height: 112px;
+  background-color: $mainColor;
+  color: white;
+  font-size: 18px;
+}

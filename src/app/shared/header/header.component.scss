@@ -1,0 +1,43 @@
+@import '../../../helpers.scss';
+
+.menu{
+  @extend .d-center;
+  justify-content: space-between;
+  position: fixed;
+  left: 0;
+  top: 0;
+  right: 0;
+  @extend .width-app;
+  margin: 0 auto;
+  @extend .padding-app-lateral;
+
+  .logo-app{
+    cursor: pointer;
+  }
+
+  .menu-list-container{
+    @extend .d-center;
+
+    .menu-list{
+      @extend .d-center;
+      list-style: none;
+      li{
+        margin-left: 16px;
+        cursor: pointer;
+      }
+    }
+
+    .menu-mobile{
+      @extend .d-none;
+    }
+  }
+}
+
+.logging{
+  margin-left: 16px;
+  background-color: $redColor !important;
+  transition: all 125ms ease-in-out;
+  &:hover{
+    background-color: rgba($color: $redColor, $alpha: 0.8) !important;
+  }
+}

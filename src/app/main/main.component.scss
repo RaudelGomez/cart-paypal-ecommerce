@@ -1,0 +1,14 @@
+@import '../../helpers.scss';
+
+.body-main{
+  @extend .padding-app-lateral;
+  padding-top: 64px;
+  min-height: 94vh;
+  display: flex;
+  flex-direction: column;
+
+  .main{
+    flex: 1;
+    padding: 16px;
+  }
+}
