@@ -10,6 +10,7 @@
   @extend .width-app;
   margin: 0 auto;
   @extend .padding-app-lateral;
+  z-index: 1000;
 
   .logo-app{
     cursor: pointer;
