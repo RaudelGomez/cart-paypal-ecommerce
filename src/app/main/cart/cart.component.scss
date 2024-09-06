@@ -13,6 +13,21 @@ section{
 
   h2{
     text-align: center;
+    background-color: rgba($color: $info, $alpha: 0.4);
+    padding: 8px;
+    margin-bottom: 0;
+    color: $blue-light;
+    border-radius: 8px;
+  }
+
+  .total{
+    border-radius: 8px;
+    padding: 16px;
+    display: flex;
+    gap: 4px;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba($color: $warning, $alpha: 0.8);
   }
 
 }

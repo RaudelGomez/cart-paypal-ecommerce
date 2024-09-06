@@ -4,4 +4,10 @@
   border-radius: 8px;
   border: 1px solid rgba($color: $black, $alpha: 0.4);
   padding: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  p{
+    margin: 0;
+  }
 }
