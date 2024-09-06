@@ -16,8 +16,7 @@
     width: 64px;
     height: 64px;
     border-radius: 50%;
-    background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
-    background-size: cover;
+    object-fit: cover;
   }
   h3, h4{
     margin: 0;

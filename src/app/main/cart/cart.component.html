@@ -1,8 +1,8 @@
 <section>
 	<div class="card-container">
 		<h2>Cart</h2>
-		<div class="card">Hola</div>
-		<div class="card">Hola</div>
-		<div class="card">Hola</div>
+    @for(item of cardItems; track $index){
+      <app-cart-item></app-cart-item>
+    }
 	</div>
 </section>
