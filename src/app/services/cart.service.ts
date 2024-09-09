@@ -14,7 +14,6 @@ export class CartService {
   constructor() { }
 
   addProductCart(product: ProductClass): void{
-    
     let productFoundInCartItem = this.cartItems.findIndex(item => (item.productId === product.id));
     if(productFoundInCartItem === -1){
       let cartItem = new CartItemClass(product.id, product.name, product.price)
@@ -23,7 +22,6 @@ export class CartService {
       this.cartItems[productFoundInCartItem].productQuantity++
     }
     this.cartItems$.next(this.cartItems);
-    // this.cartItems.findIndex(item => console.log(item.productId))
   }
 
   getProductsCart(): Observable<CartItemClass[]>{
