@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import {MatIconModule} from '@angular/material/icon';
+import { CartItemClass } from '../../../models/cart-item.class';
 
 @Component({
   selector: 'app-cart-item',
@@ -9,5 +10,6 @@ import {MatIconModule} from '@angular/material/icon';
   styleUrl: './cart-item.component.scss'
 })
 export class CartItemComponent {
+  @Input() item!: CartItemClass;
 
 }

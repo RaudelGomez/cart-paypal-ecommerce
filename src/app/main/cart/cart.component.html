@@ -1,8 +1,8 @@
 <section>
 	<div class="card-container">
-		<h2>Cart</h2>
-    @for(item of cardItems; track $index){
-      <app-cart-item></app-cart-item>
+		<h2>Your Cart</h2>
+    @for(item of (cardItems$ | async); track $index){
+      <app-cart-item [item]="item"></app-cart-item>
     }
     <div class="total">
       <strong>Total: </strong><span>40€</span>

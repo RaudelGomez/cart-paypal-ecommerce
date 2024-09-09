@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CartItemComponent } from './cart-item/cart-item.component';
+import { CartService } from '../../services/cart.service';
+import { CartItemClass } from '../../models/cart-item.class';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-cart',
@@ -10,5 +13,15 @@ import { CartItemComponent } from './cart-item/cart-item.component';
   styleUrl: './cart.component.scss'
 })
 export class CartComponent {
-  cardItems = [1,2,3]
+  cardItems$!: Observable<CartItemClass[]>;
+
+  constructor(private cartService: CartService){}
+
+  ngOnInit(): void {
+    this.loadCartItems();
+  }
+
+  loadCartItems(){
+    this.cardItems$ = this.cartService.getProductsCart();
+  }
 }

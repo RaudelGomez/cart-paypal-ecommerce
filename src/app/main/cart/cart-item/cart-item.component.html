@@ -1,6 +1,6 @@
 <div class="card">
   <p>
-    name: <strong>1</strong> units <strong>24,06€</strong>
+    {{item.productName}}: <strong>{{item.productQuantity}}</strong>@if(item.productQuantity > 1){unit(s) } @else{unit } <strong>{{item.productPrice * item.productQuantity}}€</strong>
   </p>
   <mat-icon>
     delete
