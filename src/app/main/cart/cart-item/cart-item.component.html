@@ -2,7 +2,7 @@
   <p>
     {{item.productName}} <strong>{{item.productQuantity}}</strong>(@if(item.productQuantity > 1){unit <strong>(s)</strong>} @else{unit}) <strong>{{ item.productPrice * item.productQuantity}}€</strong>
   </p>
-  <mat-icon>
+  <mat-icon (click)="deleteOneProduct(item.productId)">
     delete
   </mat-icon>
 </div>

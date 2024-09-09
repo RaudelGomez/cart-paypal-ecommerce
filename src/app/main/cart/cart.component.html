@@ -8,11 +8,18 @@
       <div class="total">
         <strong>Total: </strong><span>40€</span>
       </div>
+      <div class="container-empty-cart">
+        <h3 (click)="emptyCart()">
+          <button mat-icon-button aria-label="Example icon button with a vertical three dot icon">
+            <mat-icon>delete_forever</mat-icon>
+          </button> 
+          <span>Empty Cart</span>
+        </h3>
+      </div>
     </div>
   }@else {
     <div class="card-container">
-      <h2>Empty Cart</h2>
+      <h2>Your cart is empty</h2>
     </div>
   }
-	
 </section>

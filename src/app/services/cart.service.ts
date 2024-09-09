@@ -27,4 +27,21 @@ export class CartService {
   getProductsCart(): Observable<CartItemClass[]>{
     return this.cartItems$.asObservable();
   }
+
+  emptyCart(){
+    this.cartItems = [];
+    this.cartItems$.next(this.cartItems);
+  }
+
+  deleteOneItemFromCart(productId: string){
+    let itemFound = this.cartItems.findIndex(item => item.productId === productId);
+    if(itemFound >= 0){
+      if(this.cartItems[itemFound].productQuantity > 1){
+        this.cartItems[itemFound].productQuantity--
+      }else{
+        this.cartItems.splice(itemFound, 1);
+      }
+      this.cartItems$.next(this.cartItems);
+    }
+  }
 }

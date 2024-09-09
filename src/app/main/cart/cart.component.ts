@@ -4,11 +4,13 @@ import { CartItemComponent } from './cart-item/cart-item.component';
 import { CartService } from '../../services/cart.service';
 import { CartItemClass } from '../../models/cart-item.class';
 import { Subscription } from 'rxjs';
+import {MatButtonModule} from '@angular/material/button';
+import {MatIconModule} from '@angular/material/icon';
 
 @Component({
   selector: 'app-cart',
   standalone: true,
-  imports: [CartItemComponent, CommonModule],
+  imports: [CartItemComponent, CommonModule, MatButtonModule, MatIconModule],
   templateUrl: './cart.component.html',
   styleUrl: './cart.component.scss'
 })
@@ -31,4 +33,10 @@ export class CartComponent {
       this.cardItems = products;
     })
   }
+
+  emptyCart(){
+    this.cartService.emptyCart();
+  }
+
+  
 }
