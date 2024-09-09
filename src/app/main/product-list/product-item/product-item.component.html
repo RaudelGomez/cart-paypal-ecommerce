@@ -13,7 +13,12 @@
     {{product.name}}
   </h5>
   <p class="description">
-    L{{product.description}}
+    @if(longDescription){
+      {{description}} <span class="read-more">read more...</span>
+    }@else {
+      {{description}}
+    }
+
   </p>
   <span class="price">
     Price: {{product.price}}€
