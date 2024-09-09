@@ -23,6 +23,7 @@ export class CartComponent {
   constructor(private cartService: CartService){}
 
   ngOnInit(): void {
+    this.cartService.getCartDataBase();
     this.loadCartItems();
     this.calcTotalCart();
     this.calcTotalItems();
@@ -32,16 +33,16 @@ export class CartComponent {
     this.subscription.unsubscribe();    
   }
 
-  loadCartItems(){
-    const sub = this.cartService.getProductsCart().subscribe((products: CartItemClass[]) =>{
+  async loadCartItems(){
+    const sub = this.cartService.getCart.subscribe((products: CartItemClass[]) =>{
       this.cardItems = products;
     });
     this.subscription.add(sub);
   }
 
-  emptyCart(){
-    this.cartService.emptyCart();
-  }
+  // emptyCart(){
+  //   this.cartService.emptyCart();
+  // }
 
   calcTotalCart(){
     const sub = this.cartService.getProductsCart()

@@ -15,8 +15,8 @@ export class CartItemComponent {
 
   constructor(private cartService: CartService){}
 
-  deleteOneProduct(productId: string){
-    this.cartService.deleteOneItemFromCart(productId);
+  deleteOneProduct(productId: string, idDoc: string){
+    this.cartService.deleteOneItemFromCart(productId, idDoc);
   }
 
 }
