@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { CartItemComponent } from './cart-item/cart-item.component';
 import { CartService } from '../../services/cart.service';
 import { CartItemClass } from '../../models/cart-item.class';
-import { Subscription } from 'rxjs';
+import { map, Subscription } from 'rxjs';
 import {MatButtonModule} from '@angular/material/button';
 import {MatIconModule} from '@angular/material/icon';
 
@@ -17,11 +17,13 @@ import {MatIconModule} from '@angular/material/icon';
 export class CartComponent {
   cardItems: CartItemClass[] = [];
   subscription!: Subscription;
+  total!: number;
 
   constructor(private cartService: CartService){}
 
   ngOnInit(): void {
     this.loadCartItems();
+    this.calcTotalCart();
   }
 
   ngOnDestroy(): void {
@@ -38,5 +40,13 @@ export class CartComponent {
     this.cartService.emptyCart();
   }
 
-  
+  calcTotalCart(){
+    this.cartService.getProductsCart()
+    .pipe(map(items =>{
+      return items.reduce((acc, curr)=> acc + (curr.productPrice * curr.productQuantity), 0)
+    }))
+    .subscribe(val =>{
+      this.total = val;
+    })
+  }
 }

@@ -6,7 +6,7 @@
         <app-cart-item [item]="item"></app-cart-item>
       }
       <div class="total">
-        <strong>Total: </strong><span>40€</span>
+        <strong>Total: </strong><span>{{total | currency:'EUR'}}€</span>
       </div>
       <div class="container-empty-cart">
         <h3 (click)="emptyCart()">

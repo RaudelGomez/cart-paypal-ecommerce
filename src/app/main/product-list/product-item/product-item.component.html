@@ -21,7 +21,7 @@
 
   </p>
   <span class="price">
-    Price: {{product.price}}€
+    Price: {{product.price.toFixed(2)}}€
   </span>
   <div class="card-action">
     <button mat-button (click)="addToCart()"><mat-icon>shopping_cart</mat-icon>Add to cart</button>
