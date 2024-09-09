@@ -16,14 +16,16 @@ import {MatIconModule} from '@angular/material/icon';
 })
 export class CartComponent {
   cardItems: CartItemClass[] = [];
-  subscription!: Subscription;
+  subscription: Subscription = new Subscription();
   total!: number;
+  totalItems!: number;
 
   constructor(private cartService: CartService){}
 
   ngOnInit(): void {
     this.loadCartItems();
     this.calcTotalCart();
+    this.calcTotalItems();
   }
 
   ngOnDestroy(): void {
@@ -31,9 +33,10 @@ export class CartComponent {
   }
 
   loadCartItems(){
-    this.subscription = this.cartService.getProductsCart().subscribe((products: CartItemClass[]) =>{
+    const sub = this.cartService.getProductsCart().subscribe((products: CartItemClass[]) =>{
       this.cardItems = products;
-    })
+    });
+    this.subscription.add(sub);
   }
 
   emptyCart(){
@@ -41,12 +44,24 @@ export class CartComponent {
   }
 
   calcTotalCart(){
-    this.cartService.getProductsCart()
+    const sub = this.cartService.getProductsCart()
     .pipe(map(items =>{
       return items.reduce((acc, curr)=> acc + (curr.productPrice * curr.productQuantity), 0)
     }))
     .subscribe(val =>{
       this.total = val;
-    })
+    });
+    this.subscription.add(sub);
+  }
+
+  calcTotalItems(){
+    const sub = this.cartService.getProductsCart()
+    .pipe(map(items =>{
+      return items.reduce((acc, curr)=> acc +  curr.productQuantity, 0)
+    }))
+    .subscribe(val =>{
+      this.totalItems = val;
+    });
+    this.subscription.add(sub);
   }
 }
