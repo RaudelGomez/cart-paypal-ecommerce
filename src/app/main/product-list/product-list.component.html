@@ -1,5 +1,5 @@
 <section class="card-container">
   @for(product of products; track $index){
-    <app-product-item></app-product-item>
+    <app-product-item [product]="product"></app-product-item>
   }
 </section>

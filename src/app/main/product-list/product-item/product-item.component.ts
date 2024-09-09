@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import {MatIconModule} from '@angular/material/icon';
+import { ProductClass } from '../../../models/product.class';
 
 @Component({
   selector: 'app-product-item',
@@ -10,5 +11,6 @@ import {MatIconModule} from '@angular/material/icon';
   styleUrl: './product-item.component.scss'
 })
 export class ProductItemComponent {
+  @Input() product!: ProductClass;
 
 }

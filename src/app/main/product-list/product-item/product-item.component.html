@@ -1,22 +1,22 @@
 <div class="card">
   <div class="card-header">
-     <img src="https://material.angular.io/assets/img/examples/shiba2.jpg" class="img" alt="">
+     <img src="./assets/img/{{product['shopPic']}}" class="img" alt="{{product['shopPic']}}">
     <div>
-      <h3>Nombre</h3>
-      <h4>City</h4>
+      <h3>{{product.nameShop}}</h3>
+      <h4>{{product.city}}</h4>
     </div>
   </div>
   <figure>
-    <img src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
+    <img src="./assets/img/{{product['imageUrl']}}" class="img" alt="{{product['imageUrl']}}">
   </figure>
   <h5>
-    Sandals
+    {{product.name}}
   </h5>
   <p class="description">
-    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Expedita rerum officia recusandae obcaecati ducimus ipsam eum doloremque repudiandae illo eligendi veniam magnam, qui perferendis magni voluptate dolores sunt hic minima?
+    L{{product.description}}
   </p>
   <span class="price">
-    Price: 20€
+    Price: {{product.price}}€
   </span>
   <div class="card-action">
     <button mat-button><mat-icon>shopping_cart</mat-icon>Add to cart</button>
