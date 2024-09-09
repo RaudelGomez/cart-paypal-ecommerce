@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import { ProductItemComponent } from './product-item/product-item.component';
 import { ProductService } from '../../services/product.service';
 import { ProductClass } from '../../models/product.class';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-product-list',
@@ -14,6 +15,7 @@ import { ProductClass } from '../../models/product.class';
 export class ProductListComponent {
 
   products: ProductClass[] = [];
+  subscription: Subscription = new Subscription();
 
   constructor(private productService: ProductService){
 
@@ -21,10 +23,18 @@ export class ProductListComponent {
 
   ngOnInit(): void {
     this.loadProducts();
+    this.productService.getProductsDataBase();
+  }
+
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe();    
   }
 
   loadProducts(){
-    this.products = this.productService.getProducts;
+    const sub = this.productService.getProducts().subscribe(
+      item => {this.products = item}
+    );
+    this.subscription.add(sub);
   }
   
 }
