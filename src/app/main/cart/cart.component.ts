@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { CartItemComponent } from './cart-item/cart-item.component';
 import { CartService } from '../../services/cart.service';
 import { CartItemClass } from '../../models/cart-item.class';
-import { Observable } from 'rxjs';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-cart',
@@ -13,7 +13,8 @@ import { Observable } from 'rxjs';
   styleUrl: './cart.component.scss'
 })
 export class CartComponent {
-  cardItems$!: Observable<CartItemClass[]>;
+  cardItems: CartItemClass[] = [];
+  subscription!: Subscription;
 
   constructor(private cartService: CartService){}
 
@@ -21,7 +22,13 @@ export class CartComponent {
     this.loadCartItems();
   }
 
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe();    
+  }
+
   loadCartItems(){
-    this.cardItems$ = this.cartService.getProductsCart();
+    this.subscription = this.cartService.getProductsCart().subscribe((products: CartItemClass[]) =>{
+      this.cardItems = products;
+    })
   }
 }
