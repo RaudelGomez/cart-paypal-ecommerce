@@ -75,41 +75,23 @@ export class CartService {
     }
   }
 
-  // addProductCart(product: ProductClass): void{
-  //   let productFoundInCartItem = this.cartItems.findIndex(item => (item.productId === product.id));
-  //   if(productFoundInCartItem === -1){
-  //     let cartItem = new CartItemClass('', product.id, product.name, product.price)
-  //     this.cartItems.push(cartItem);
-  //   }else{
-  //     this.cartItems[productFoundInCartItem].productQuantity++
-  //   }
-  //   this.cartItems$.next(this.cartItems);
-  // }
-
   getProductsCart(): Observable<CartItemClass[]>{
     return this.cartItems$.asObservable();
   }
 
-  
-
-  // emptyCart(){
-  //   this.cartItems = [];
-  //   this.cartItems$.next(this.cartItems);
-  // }
-
-
-
-  // deleteOneItemFromCart(productId: string){
-  //   let itemFound = this.cartItems.findIndex(item => item.productId === productId);
-  //   if(itemFound >= 0){
-  //     if(this.cartItems[itemFound].productQuantity > 1){
-  //       this.cartItems[itemFound].productQuantity--
-  //     }else{
-  //       this.cartItems.splice(itemFound, 1);
-  //     }
-  //     this.cartItems$.next(this.cartItems);
-  //   }
-  // }
+  async emptyCart(){
+    try {
+      const collectionRef = this.getCartRef();
+      const querySnapshot = await getDocs(await collectionRef);
+      querySnapshot.forEach(async (docSnapshot) => {
+        await deleteDoc(doc(this.firestore, 'cart', docSnapshot.id));
+        console.log(`Documento con ID ${docSnapshot.id} eliminado.`);
+      });
+      console.log('Todos los documentos han sido eliminados.');
+    } catch (error) {
+      console.error('Error al eliminar la colección: ', error);
+    }
+  }
 
   async deleteOneItemFromCart(productId: string, idDoc: string){
     try{

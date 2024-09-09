@@ -40,9 +40,9 @@ export class CartComponent {
     this.subscription.add(sub);
   }
 
-  // emptyCart(){
-  //   this.cartService.emptyCart();
-  // }
+  emptyCart(){
+    this.cartService.emptyCart();
+  }
 
   calcTotalCart(){
     const sub = this.cartService.getProductsCart()
