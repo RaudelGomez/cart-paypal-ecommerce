@@ -1,0 +1,11 @@
+{
+  "hosting": [
+    {
+      "target": "cart-paypal",
+      "source": ".",
+      "frameworksBackend": {
+        "region": "europe-west1"
+      }
+    }
+  ]
+}

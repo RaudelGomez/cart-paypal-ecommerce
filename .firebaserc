@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "e-commerce-sandals": {
+      "hosting": {
+        "cart-paypal": [
+          "e-commerce-sandals"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "e-commerce-sandals"
+  }
+}

@@ -42,6 +42,12 @@
           },
           "configurations": {
             "production": {
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.prod.ts"
+                }
+              ],
               "budgets": [
                 {
                   "type": "initial",
@@ -101,6 +107,23 @@
             ],
             "scripts": []
           }
+        },
+        "deploy": {
+          "builder": "@angular/fire:deploy",
+          "options": {
+            "version": 2
+          },
+          "configurations": {
+            "production": {
+              "buildTarget": "cart-paypal:build:production",
+              "serveTarget": "cart-paypal:serve:production"
+            },
+            "development": {
+              "buildTarget": "cart-paypal:build:development",
+              "serveTarget": "cart-paypal:serve:development"
+            }
+          },
+          "defaultConfiguration": "production"
         }
       }
     }
