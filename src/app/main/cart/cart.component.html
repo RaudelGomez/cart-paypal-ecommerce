@@ -24,4 +24,5 @@
       <h2>Your cart is empty</h2>
     </div>
   }
+  <div class="paypal" [ngClass]="{'invisible': total<= 0}" #paymentRef></div>
 </section>
