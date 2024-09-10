@@ -1,4 +1,4 @@
-import { Component, Input } from "@angular/core";
+import { Component } from "@angular/core";
 import {
 	ICreateOrderRequest,
 	IPayPalConfig,
@@ -28,9 +28,9 @@ export class PaypalComponent {
 	constructor(private cartService: CartService) {}
 
 	ngOnInit(): void {
+		// this.initConfig();
 		// this.itemCartPaypal();
     this.calcTotalCart();
-		// this.initConfig();
 	}
 
 	ngOnDestroy(): void {
@@ -81,7 +81,7 @@ export class PaypalComponent {
 	// private initConfig(): void {
 	// 	this.payPalConfig = {
 	// 		currency: "EUR",
-	// 		clientId: environment.clientID_paypal,
+	// 		clientId: "AfktmEh4POVXSts-YandkJnNc9zmG-Crtnerb70H18DhBzOeepsN4QaZD5AfDnnSZ9FpqC5FwqiYPumU",
 	// 		createOrderOnClient: (data) =>
 	// 			<ICreateOrderRequest>{
 	// 				intent: "CAPTURE",
@@ -89,12 +89,12 @@ export class PaypalComponent {
 	// 					{
 	// 						amount: {
 	// 							currency_code: "EUR",
-	// 							value: "9.99",
+	// 							value: "20",
 	// 							// value: this.totalCart.toFixed(2).toString(),
 	// 							breakdown: {
 	// 								item_total: {
 	// 									currency_code: "EUR",
-	// 									value: "9.99",
+	// 									value: "20",
 	// 									// value: this.totalCart.toFixed(2).toString(),
 	// 								},
 	// 							},
@@ -107,7 +107,7 @@ export class PaypalComponent {
 	// 								category: "DIGITAL_GOODS",
 	// 								unit_amount: {
 	// 									currency_code: "EUR",
-	// 									value: "9.99",
+	// 									value: "20",
 	// 								},
 	// 							},
 	// 						],

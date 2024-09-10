@@ -7,6 +7,7 @@ import { map, Subscription } from 'rxjs';
 import {MatButtonModule} from '@angular/material/button';
 import {MatIconModule} from '@angular/material/icon';
 import { PaypalComponent } from '../../shared/paypal/paypal.component';
+import { stringify } from 'querystring';
 
 
 @Component({
@@ -23,9 +24,7 @@ export class CartComponent {
   totalItems!: number;
   itemsPayPal: any[] = [];
 
-  //New Method
   @ViewChild('paymentRef', {static: true}) paymentRef!: ElementRef;
-
 
   constructor(private cartService: CartService){}
 
@@ -35,6 +34,9 @@ export class CartComponent {
     this.calcTotalCart();
     this.calcTotalItems();
     this.itemCartPaypal();
+  }
+
+  ngAfterViewInit(): void {
     window.paypal.Buttons({
       createOrder: (data: any, actions: any)=>{
         return actions.order.create({
@@ -43,27 +45,14 @@ export class CartComponent {
               amount: {
                 currency_code: "EUR",
                 value: this.total.toFixed(2).toString(),
-                // value: this.totalCart.toFixed(2).toString(),
                 breakdown: {
                   item_total: {
                     currency_code: "EUR",
                     value: this.total.toFixed(2).toString(),
-                    // value: this.totalCart.toFixed(2).toString(),
                   },
                 },
               },
               items: this.itemsPayPal,
-              // items: [
-              //   {
-              //     name: "Enterprise Subscription",
-              //     quantity: "1",
-              //     category: "DIGITAL_GOODS",
-              //     unit_amount: {
-              //       currency_code: "EUR",
-              //       value: "9.99",
-              //     },
-              //   },
-              // ],
             },
           ],
         })
@@ -101,7 +90,7 @@ export class CartComponent {
           console.log("onClick", data, actions);
           // this.resetStatus();
         },
-    }).render(this.paymentRef.nativeElement);
+    }).render(this.paymentRef.nativeElement);  
   }
 
   ngOnDestroy(): void {
