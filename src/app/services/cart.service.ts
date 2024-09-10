@@ -36,9 +36,9 @@ export class CartService {
     })
   }
 
-  get getCart(): Observable<CartItemClass[]>{
-    return this.cartItems$.asObservable();
-  }
+  // get getCart(): Observable<CartItemClass[]>{
+  //   return this.cartItems$.asObservable();
+  // }
 
   private toJSON(item: any): CartItemClass {
     return {

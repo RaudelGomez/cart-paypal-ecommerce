@@ -8,6 +8,7 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatIconModule} from '@angular/material/icon';
 import { PaypalComponent } from '../../shared/paypal/paypal.component';
 
+
 @Component({
   selector: 'app-cart',
   standalone: true,
@@ -20,6 +21,7 @@ export class CartComponent {
   subscription: Subscription = new Subscription();
   total!: number;
   totalItems!: number;
+
 
   constructor(private cartService: CartService){}
 
@@ -35,7 +37,7 @@ export class CartComponent {
   }
 
   async loadCartItems(){
-    const sub = this.cartService.getCart.subscribe((products: CartItemClass[]) =>{
+    const sub = this.cartService.getProductsCart().subscribe((products: CartItemClass[]) =>{
       this.cardItems = products;
     });
     this.subscription.add(sub);
@@ -66,4 +68,5 @@ export class CartComponent {
     });
     this.subscription.add(sub);
   }
+
 }
