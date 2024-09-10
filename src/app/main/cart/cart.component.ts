@@ -6,11 +6,12 @@ import { CartItemClass } from '../../models/cart-item.class';
 import { map, Subscription } from 'rxjs';
 import {MatButtonModule} from '@angular/material/button';
 import {MatIconModule} from '@angular/material/icon';
+import { PaypalComponent } from '../../shared/paypal/paypal.component';
 
 @Component({
   selector: 'app-cart',
   standalone: true,
-  imports: [CartItemComponent, CommonModule, MatButtonModule, MatIconModule],
+  imports: [CartItemComponent, CommonModule, MatButtonModule, MatIconModule, PaypalComponent],
   templateUrl: './cart.component.html',
   styleUrl: './cart.component.scss'
 })
