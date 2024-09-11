@@ -1,7 +1,17 @@
 <section>
-  <h2 mat-dialog-title>Dialog with elements</h2>
-  <mat-dialog-content>This dialog showcases the title, close, content and actions elements.</mat-dialog-content>
-  <mat-dialog-actions>
-    <button mat-button mat-dialog-close>Close</button>
-  </mat-dialog-actions>
+  @if(data?.length){
+    <div class="message-container">
+      <h2 mat-dialog-title>Hey {{data[0].shipping.name.full_name}}</h2>
+      <mat-dialog-content> 
+        <p>Your purchase with ID: <strong>{{id}}</strong> is on the way.</p>
+        <p>
+          The Total was  {{data[0].amount.breakdown.item_total.value}} {{data[0].amount.breakdown.item_total.currency_code}}
+          Thank you for buying.
+        </p>
+      </mat-dialog-content>
+      <mat-dialog-actions>
+        <button mat-button mat-dialog-close>Close</button>
+      </mat-dialog-actions>
+    </div>
+  }
 </section>

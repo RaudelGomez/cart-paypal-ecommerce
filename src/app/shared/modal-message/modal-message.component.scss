@@ -1,0 +1,21 @@
+@import '../../../helpers.scss';
+
+section {
+  div.message-container{
+    background-color: $info;
+  }
+}
+
+section div.message-container{
+  h2, mat-dialog-content, mat-dialog-actions, button{
+    background-color: rgba($color: $info, $alpha: 0.8);
+    color: $black;
+  }
+}
+
+section{
+  div.spinner-container{
+    background-color: transparent !important;
+  }
+}
+

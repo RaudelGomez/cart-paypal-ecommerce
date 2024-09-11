@@ -1,3 +1,4 @@
+import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import {MatButtonModule} from '@angular/material/button';
 import {
@@ -15,16 +16,18 @@ import {
     MatDialogActions,
     MatDialogClose,
     MatDialogContent,
-    MatDialogTitle,],
+    MatDialogTitle,
+    CommonModule],
   templateUrl: './modal-message.component.html',
   styleUrl: './modal-message.component.scss'
 })
 export class ModalMessageComponent {
-  data!:any;
+  data:any = [];
+  id: string = "";
 
   constructor(public dialogRef: MatDialogRef<ModalMessageComponent>){}
 
-  ngOnInit(): void {
+  ngAfterViewInit(): void {
     console.log(this.data);  
     setTimeout(() => {
       this.dialogRef.close();

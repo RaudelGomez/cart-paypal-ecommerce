@@ -30,9 +30,10 @@ export class CartComponent {
 
   constructor(private cartService: CartService){}
   
-  openDialog(data: any) {
+  openDialog(details: any) {
     const dialog = this.dialog.open(ModalMessageComponent);
-    dialog.componentInstance.data = data;
+    dialog.componentInstance.data = details.purchase_units;
+    dialog.componentInstance.id = details.id;
   }
 
   ngOnInit(): void {
@@ -76,14 +77,15 @@ export class CartComponent {
             //   "onApprove - you can get full order details inside onApprove: ",
             //   details
             // );
+            this.openDialog(details);
             this.emptyCart(); 
           });
         },
         onClientAuthorization: (data: any) => {
-          // console.log(
-          //   "onClientAuthorization - you should probably inform your server about completed transaction at this point",
-          //   data
-          // );
+          console.log(
+            "onClientAuthorization - you should probably inform your server about completed transaction at this point",
+            data
+          );
           // this.showSuccess = true; 
         },
         onCancel: (data: any, actions: any) => {
