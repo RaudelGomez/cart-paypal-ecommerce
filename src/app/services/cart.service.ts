@@ -85,11 +85,11 @@ export class CartService {
       const querySnapshot = await getDocs(await collectionRef);
       querySnapshot.forEach(async (docSnapshot) => {
         await deleteDoc(doc(this.firestore, 'cart', docSnapshot.id));
-        console.log(`Documento con ID ${docSnapshot.id} eliminado.`);
+        // console.log(`Document with ID ${docSnapshot.id} was deleted.`);
       });
-      console.log('Todos los documentos han sido eliminados.');
+      console.log('All Documents were deleted.');
     } catch (error) {
-      console.error('Error al eliminar la colección: ', error);
+      console.error('Error: ', error);
     }
   }
 

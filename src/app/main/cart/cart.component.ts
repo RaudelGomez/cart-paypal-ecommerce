@@ -1,4 +1,4 @@
-import { Component, ElementRef, ViewChild } from '@angular/core';
+import { Component, ElementRef, inject, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CartItemComponent } from './cart-item/cart-item.component';
 import { CartService } from '../../services/cart.service';
@@ -7,7 +7,8 @@ import { map, Subscription } from 'rxjs';
 import {MatButtonModule} from '@angular/material/button';
 import {MatIconModule} from '@angular/material/icon';
 import { PaypalComponent } from '../../shared/paypal/paypal.component';
-import { stringify } from 'querystring';
+import { ModalMessageComponent } from '../../shared/modal-message/modal-message.component';
+import { MatDialog } from '@angular/material/dialog';
 
 
 @Component({
@@ -23,10 +24,16 @@ export class CartComponent {
   total: number = 0;
   totalItems!: number;
   itemsPayPal: any[] = [];
+  readonly dialog = inject(MatDialog);
 
   @ViewChild('paymentRef', {static: true}) paymentRef!: ElementRef;
 
   constructor(private cartService: CartService){}
+  
+  openDialog(data: any) {
+    const dialog = this.dialog.open(ModalMessageComponent);
+    dialog.componentInstance.data = data;
+  }
 
   ngOnInit(): void {
     this.cartService.getCartDataBase();
@@ -58,36 +65,37 @@ export class CartComponent {
         })
       },
       onApprove: (data: any, actions: { order: { get: () => Promise<any>; }; }) => {
-          console.log(
-            "onApprove - transaction was approved, but not authorized",
-            data,
-            actions
-          );
+          // console.log(
+          //   "onApprove - transaction was approved, but not authorized",
+          //   data,
+          //   actions
+          // );
+          this.openDialog(data);
           actions.order.get().then((details: any) => {
-            console.log(
-              "onApprove - you can get full order details inside onApprove: ",
-              details
-            );
+            // console.log(
+            //   "onApprove - you can get full order details inside onApprove: ",
+            //   details
+            // );
             this.emptyCart(); 
           });
         },
         onClientAuthorization: (data: any) => {
-          console.log(
-            "onClientAuthorization - you should probably inform your server about completed transaction at this point",
-            data
-          );
+          // console.log(
+          //   "onClientAuthorization - you should probably inform your server about completed transaction at this point",
+          //   data
+          // );
           // this.showSuccess = true; 
         },
         onCancel: (data: any, actions: any) => {
-          console.log("OnCancel", data, actions);
+          // console.log("OnCancel", data, actions);
           // this.showCancel = true;
         },
         onError: (err: any) => {
-          console.log("OnError", err);
+          // console.log("OnError", err);
           // this.showError = true;
         },
         onClick: (data: any, actions: any) => {
-          console.log("onClick", data, actions);
+          // console.log("onClick", data, actions);
           // this.resetStatus();
         },
     }).render(this.paymentRef.nativeElement);  
@@ -114,7 +122,7 @@ export class CartComponent {
               },
             });
           });
-          console.log('Items for PayPal:', this.itemsPayPal);  
+          // console.log('Items for PayPal:', this.itemsPayPal);  
         },
         error: (err) => {
           console.error('Error fetching cart items', err);  
