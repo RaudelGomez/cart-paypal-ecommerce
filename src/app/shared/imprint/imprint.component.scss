@@ -1,0 +1,20 @@
+.body-main{
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+
+  .main{
+    flex: 1;
+    padding: 72px 16px 16px 16px;
+    display: flex;
+    gap:32px;
+    .left-side{
+      flex:3;
+    }
+    .right-side{
+      flex:1;
+      position: relative;
+    }
+  }
+}
