@@ -8,5 +8,6 @@ import { Component } from '@angular/core';
   styleUrl: './modal-info-product.component.scss'
 })
 export class ModalInfoProductComponent {
+  modalActivate: boolean = false;
 
 }

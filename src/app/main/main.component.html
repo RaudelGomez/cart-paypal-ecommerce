@@ -3,7 +3,7 @@
   <div class="main">
     <div class="left-side">
       <app-product-list></app-product-list>
-      <div class="modal-info-container">
+      <div class="modal-info-container" [ngClass]="{'d-none': true}">
         <app-modal-info-product></app-modal-info-product>
       </div>
     </div>

@@ -33,3 +33,7 @@
   @extend .d-center;
   background-color: rgba($color: $black, $alpha: 0.3);
 }
+
+.d-none{
+  display:none;
+}
