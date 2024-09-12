@@ -14,7 +14,7 @@
   </h5>
   <p class="description">
     @if(longDescription){
-      {{description}} <span class="read-more" (click)="this.modalShowService.changeModalStatus()">read more...</span>
+      {{description}} <span class="read-more" (click)="showModal()">read more...</span>
     }@else {
       {{description}}
     }

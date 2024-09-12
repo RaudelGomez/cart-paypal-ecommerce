@@ -22,7 +22,7 @@ export class ProductItemComponent {
   $modalActivate!: boolean;
   subscription: Subscription = new Subscription();
 
-  constructor(private cartService: CartService, public modalShowService: ModalShowService){}
+  constructor(private cartService: CartService, private modalShowService: ModalShowService){}
 
   ngOnInit(): void {
     this.getDescription(); 
@@ -46,6 +46,11 @@ export class ProductItemComponent {
 
   addToCart(): void{
     this.cartService.addProductCart(this.product);
+  }
+
+  showModal(){
+    this.modalShowService.changeModalStatus();
+    this.modalShowService.sendDataModal(this.product);
   }
 
   getModalActivation(){

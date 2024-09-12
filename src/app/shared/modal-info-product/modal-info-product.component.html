@@ -1,7 +1,9 @@
-<div class="card">
-  <img src="./assets/img/sandals1.jpg" alt="sandal">
-  <div class="container-text">
-    <h2>Title</h2>
-    <p class="description">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
+@if($modalData && $modalData.length > 0){
+  <div class="card">
+    <img src="./assets/img/{{$modalData[0]?.imageUrl}}" alt="{{$modalData[0]?.imageUrl}}">
+    <div class="container-text">
+      <h2>{{$modalData[0].name}}</h2>
+      <p class="description">{{$modalData[0].description}}</p>
+    </div>
   </div>
-</div>
+}
