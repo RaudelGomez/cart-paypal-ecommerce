@@ -4,6 +4,8 @@ import {MatIconModule} from '@angular/material/icon';
 import { ProductClass } from '../../../models/product.class';
 import { CommonModule } from '@angular/common';
 import { CartService } from '../../../services/cart.service';
+import { ModalShowService } from '../../../services/modal-show.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-product-item',
@@ -17,11 +19,18 @@ export class ProductItemComponent {
 
   description!: string;
   longDescription: boolean = false;
+  $modalActivate!: boolean;
+  subscription: Subscription = new Subscription();
 
-  constructor(private cartService: CartService){}
+  constructor(private cartService: CartService, public modalShowService: ModalShowService){}
 
   ngOnInit(): void {
     this.getDescription(); 
+    this.getModalActivation();
+  }
+
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe();    
   }
 
   getDescription(): void{
@@ -39,4 +48,10 @@ export class ProductItemComponent {
     this.cartService.addProductCart(this.product);
   }
 
+  getModalActivation(){
+    const sub = this.modalShowService.getChangeModalStatus().subscribe(
+      val => this.$modalActivate = val
+    )
+    this.subscription.add(sub);
+  }
 }

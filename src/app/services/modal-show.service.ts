@@ -6,7 +6,7 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class ModalShowService {
   
-  private modalShow: boolean = false;
+  private modalShow: boolean = true;
   private modalShowSubject: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(this.modalShow);
 
   constructor() { }
@@ -14,6 +14,7 @@ export class ModalShowService {
   changeModalStatus(){
     this.modalShow = !this.modalShow;
     this.modalShowSubject.next(this.modalShow);
+    console.log(this.modalShow);
   }
 
   getChangeModalStatus(){

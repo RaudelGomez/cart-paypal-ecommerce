@@ -5,6 +5,8 @@ import { ProductListComponent } from './product-list/product-list.component';
 import { CartComponent } from './cart/cart.component';
 import { ModalInfoProductComponent } from '../shared/modal-info-product/modal-info-product.component';
 import { CommonModule } from '@angular/common';
+import { ModalShowService } from '../services/modal-show.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-main',
@@ -14,5 +16,27 @@ import { CommonModule } from '@angular/common';
   styleUrl: './main.component.scss'
 })
 export class MainComponent {
+  $modalActivate!: boolean;
+  subscription: Subscription = new Subscription();
 
+  constructor(public modalShowService: ModalShowService){}
+
+  ngOnInit(): void {
+    this.getModalActivation();
+  }
+
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe();    
+  }
+
+  getModalActivation(){
+    const sub = this.modalShowService.getChangeModalStatus().subscribe(
+      val => this.$modalActivate = val
+    )
+    this.subscription.add(sub);
+  }
+
+  closeModal(){
+    this.modalShowService.changeModalStatus();
+  }
 }
