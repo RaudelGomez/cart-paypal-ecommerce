@@ -3,16 +3,19 @@
     <img class="logo-img" src="./assets/img/sandals_logo.png" alt="sandals">
     <span>HealthyFeet</span>
   </div> 
-  <div class="menu-list-container">
-    <ul class="menu-list">
-      <li>Features</li>
-      <li>Enterprise</li>
-      <li>Support</li>
-      <li>Pricing</li>
-    </ul>
-    <button mat-raised-button class="logging">Log out</button>
-    <button mat-icon-button class="menu-mobile" aria-label="Example icon-button with menu icon">
-      <mat-icon>menu</mat-icon>
+  <div class="menu-list-container"> 
+    <button mat-icon-button>
+      <mat-icon  matBadge={{totalItems}}>shopping_cart</mat-icon>
     </button>
   </div>
 </mat-toolbar>
+
+
+<!-- <button mat-raised-button class="logging">Log out</button>
+<ul class="menu-list">
+  <li>Features</li>
+  <li>Enterprise</li>
+  <li>Support</li>
+  <li>Pricing</li>
+  class="menu-mobile"
+</ul> -->

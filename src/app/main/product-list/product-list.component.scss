@@ -1,7 +1,13 @@
 .card-container {
   display: grid;
   grid-template-columns: repeat(2, 1fr);  
-  gap: 32px; 
+  gap: 24px; 
 }
 
 
+@media (max-width: 700px){
+  .card-container {
+    grid-template-columns: 1fr; 
+    gap: 8px;  
+  }
+}

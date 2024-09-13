@@ -70,3 +70,9 @@ span.read-more{
   font-weight: 600;
   cursor: pointer;
 }
+
+@media (max-width: 400px){
+  h5{
+    font-size: 16px;
+  }
+}
