@@ -1,6 +1,6 @@
 <section class="body-main">
   <app-header></app-header>
-  <div class="main">
+  <div class="main" [ngClass]="{'d-none': !$modalCart}">
     <div class="left-side">
       <app-product-list></app-product-list>
       <div class="modal-info-container" [ngClass]="{'d-none': $modalActivate}" (click)="closeModal()">
@@ -10,6 +10,9 @@
     <div class="right-side">
       <app-cart></app-cart>
     </div>
+  </div>
+  <div class="modal-cart" [ngClass]="{'d-none': $modalCart}">
+    <app-cart></app-cart>      
   </div>
   <app-footer></app-footer>
 </section>

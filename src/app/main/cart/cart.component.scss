@@ -4,6 +4,8 @@ section{
   width: 100%;
   position: sticky !important;
   top:80px !important;
+  display: flex;
+  flex-direction: column;
 }
 
 .card-container{
@@ -48,5 +50,14 @@ section{
 }
 
 .invisible{
+  display: none;
+}
+
+.close-button-container{
+  display: flex;
+  justify-content: end;
+}
+
+.d-none{
   display: none;
 }

@@ -1,4 +1,9 @@
 <section>
+  <div class="close-button-container" [ngClass]="{'d-none': $modalCart}">
+    <button class="close-modal" mat-icon-button (click)="closeModal()">
+      <mat-icon>cancel</mat-icon>
+    </button> 
+  </div>
   @if(cardItems.length > 0){
     <div class="card-container">
       <h2>Your Cart</h2>
@@ -10,7 +15,7 @@
       </div>
       <div class="container-empty-cart">
         <h3 (click)="emptyCart()">
-          <button mat-icon-button aria-label="Example icon button with a vertical three dot icon">
+          <button mat-icon-button>
             <mat-icon>delete_forever</mat-icon>
           </button> 
           <span>Empty Cart ({{totalItems}})</span>

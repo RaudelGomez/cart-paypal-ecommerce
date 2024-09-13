@@ -4,9 +4,9 @@
     <span>HealthyFeet</span>
   </div> 
   <div class="menu-list-container"> 
-    <button mat-icon-button>
-      <mat-icon  matBadge={{totalItems}}>shopping_cart</mat-icon>
-    </button>
+      <button mat-icon-button class="menu-mobile" (click)="openModalCart()">
+        <mat-icon matBadge={{totalItems}} >shopping_cart</mat-icon>
+      </button>
   </div>
 </mat-toolbar>
 

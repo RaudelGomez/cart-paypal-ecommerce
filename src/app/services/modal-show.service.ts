@@ -11,6 +11,9 @@ export class ModalShowService {
   private modalData: any[] = [];
   private modalDataSubject: BehaviorSubject<any[]> = new BehaviorSubject<any[]>(this.modalData);
 
+  private showCartModal: boolean = false;
+  private showCartModalSubject: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(this.showCartModal);
+
   constructor() { }
 
   changeModalStatus(){
@@ -31,4 +34,14 @@ export class ModalShowService {
   getModalInfo(){
     return this.modalDataSubject.asObservable();
   }
+
+  changeShowModalCart(){
+    this.showCartModal = !this.showCartModal;
+    this.showCartModalSubject.next(this.showCartModal);
+  }
+
+  getShowCartModalvalue(){
+    return this.showCartModalSubject.asObservable();
+  }
+
 }

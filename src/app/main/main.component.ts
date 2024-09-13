@@ -6,7 +6,7 @@ import { CartComponent } from './cart/cart.component';
 import { ModalInfoProductComponent } from '../shared/modal-info-product/modal-info-product.component';
 import { CommonModule } from '@angular/common';
 import { ModalShowService } from '../services/modal-show.service';
-import { Subscription } from 'rxjs';
+import { BehaviorSubject, Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-main',
@@ -19,10 +19,13 @@ export class MainComponent {
   $modalActivate!: boolean;
   subscription: Subscription = new Subscription();
 
-  constructor(public modalShowService: ModalShowService){}
+  $modalCart!: boolean;
+
+  constructor(private modalShowService: ModalShowService){}
 
   ngOnInit(): void {
     this.getModalActivation();
+    this.getModalCart();
   }
 
   ngOnDestroy(): void {
@@ -32,6 +35,13 @@ export class MainComponent {
   getModalActivation(){
     const sub = this.modalShowService.getChangeModalStatus().subscribe(
       val => this.$modalActivate = val
+    )
+    this.subscription.add(sub);
+  }
+
+  getModalCart(){
+    const sub = this.modalShowService.getShowCartModalvalue().subscribe(
+      val => this.$modalCart = val
     )
     this.subscription.add(sub);
   }

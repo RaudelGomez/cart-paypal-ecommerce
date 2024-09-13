@@ -9,6 +9,7 @@ import {MatIconModule} from '@angular/material/icon';
 import { PaypalComponent } from '../../shared/paypal/paypal.component';
 import { ModalMessageComponent } from '../../shared/modal-message/modal-message.component';
 import { MatDialog } from '@angular/material/dialog';
+import { ModalShowService } from '../../services/modal-show.service';
 
 
 @Component({
@@ -24,11 +25,14 @@ export class CartComponent {
   total: number = 0;
   totalItems!: number;
   itemsPayPal: any[] = [];
+  $modalCart!: boolean;
   readonly dialog = inject(MatDialog);
 
   @ViewChild('paymentRef', {static: true}) paymentRef!: ElementRef;
 
-  constructor(private cartService: CartService){}
+  constructor(private cartService: CartService, private modalShowService: ModalShowService){
+    
+  }
   
   openDialog(details: any) {
     const dialog = this.dialog.open(ModalMessageComponent);
@@ -42,6 +46,8 @@ export class CartComponent {
     this.calcTotalCart();
     this.calcTotalItems();
     this.itemCartPaypal();
+    this.getModalCart();
+    console.log(this.$modalCart);
   }
 
   ngAfterViewInit(): void {
@@ -167,6 +173,17 @@ export class CartComponent {
       this.totalItems = val;
     });
     this.subscription.add(sub);
+  }
+
+  getModalCart(){
+    const sub = this.modalShowService.getShowCartModalvalue().subscribe(
+      val => this.$modalCart = val
+    )
+    this.subscription.add(sub);
+  }
+
+  closeModal(){
+    this.modalShowService.changeShowModalCart();
   }
 
 }

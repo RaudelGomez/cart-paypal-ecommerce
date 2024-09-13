@@ -6,11 +6,13 @@ import { RouterModule } from '@angular/router';
 import {MatBadgeModule} from '@angular/material/badge';
 import { CartService } from '../../services/cart.service';
 import { map, Subscription } from 'rxjs';
+import { CommonModule } from '@angular/common';
+import { ModalShowService } from '../../services/modal-show.service';
 
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [MatToolbarModule, MatIconModule, MatButtonModule, RouterModule, MatBadgeModule],
+  imports: [MatToolbarModule, MatIconModule, MatButtonModule, RouterModule, MatBadgeModule, CommonModule],
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss'
 })
@@ -18,7 +20,7 @@ export class HeaderComponent {
   totalItems: number = 0;
   subscription: Subscription = new Subscription();
 
-  constructor(private cartService: CartService){}
+  constructor(private cartService: CartService, private modalShowService: ModalShowService){}
 
   ngOnInit(): void {
     this.cartService.getCartDataBase();
@@ -38,5 +40,9 @@ export class HeaderComponent {
       this.totalItems = val;
     });
     this.subscription.add(sub);
+  }
+
+  openModalCart(){
+    this.modalShowService.changeShowModalCart();
   }
 }
