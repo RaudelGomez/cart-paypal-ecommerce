@@ -2,7 +2,7 @@ import { Component } from "@angular/core";
 import { MatToolbarModule } from "@angular/material/toolbar";
 import { MatIconModule } from "@angular/material/icon";
 import { MatButtonModule } from "@angular/material/button";
-import {  RouterModule } from "@angular/router";
+import { RouterModule } from "@angular/router";
 import { MatBadgeModule } from "@angular/material/badge";
 import { CartService } from "../../services/cart.service";
 import { BehaviorSubject, map, Subscription } from "rxjs";
@@ -27,19 +27,16 @@ export class HeaderComponent {
 	totalItems: number = 0;
 	subscription: Subscription = new Subscription();
 	showIconCart: boolean = true;
-  $showIconCartSubject = new BehaviorSubject(this.showIconCart);
-  
+	$showIconCartSubject = new BehaviorSubject(this.showIconCart);
 
 	constructor(
 		private cartService: CartService,
-		private modalShowService: ModalShowService,
-	) {
-    
-  }
+		private modalShowService: ModalShowService
+	) {}
 
-  getVal(){
-    return this.$showIconCartSubject.asObservable();
-  }
+	getVal() {
+		return this.$showIconCartSubject.asObservable();
+	}
 
 	ngOnInit(): void {
 		this.cartService.getCartDataBase();
