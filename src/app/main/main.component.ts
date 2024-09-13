@@ -18,7 +18,6 @@ import { Subscription } from 'rxjs';
 export class MainComponent {
   $modalActivate!: boolean;
   subscription: Subscription = new Subscription();
-
   $modalCart!: boolean;
 
   constructor(private modalShowService: ModalShowService){}

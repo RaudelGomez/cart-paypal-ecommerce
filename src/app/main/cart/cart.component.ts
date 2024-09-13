@@ -6,7 +6,6 @@ import { CartItemClass } from '../../models/cart-item.class';
 import { map, Subscription } from 'rxjs';
 import {MatButtonModule} from '@angular/material/button';
 import {MatIconModule} from '@angular/material/icon';
-import { PaypalComponent } from '../../shared/paypal/paypal.component';
 import { ModalMessageComponent } from '../../shared/modal-message/modal-message.component';
 import { MatDialog } from '@angular/material/dialog';
 import { ModalShowService } from '../../services/modal-show.service';
@@ -15,7 +14,7 @@ import { ModalShowService } from '../../services/modal-show.service';
 @Component({
   selector: 'app-cart',
   standalone: true,
-  imports: [CartItemComponent, CommonModule, MatButtonModule, MatIconModule, PaypalComponent],
+  imports: [CartItemComponent, CommonModule, MatButtonModule, MatIconModule],
   templateUrl: './cart.component.html',
   styleUrl: './cart.component.scss'
 })

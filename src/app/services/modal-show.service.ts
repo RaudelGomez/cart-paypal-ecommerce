@@ -10,7 +10,6 @@ export class ModalShowService {
   private modalShowSubject: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(this.modalShow);
   private modalData: any[] = [];
   private modalDataSubject: BehaviorSubject<any[]> = new BehaviorSubject<any[]>(this.modalData);
-
   private showCartModal: boolean = true;
   private showCartModalSubject: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(this.showCartModal);
 

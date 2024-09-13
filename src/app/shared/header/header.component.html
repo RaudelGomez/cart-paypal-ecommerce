@@ -3,11 +3,13 @@
     <img class="logo-img" src="./assets/img/sandals_logo.png" alt="sandals">
     <span>HealthyFeet</span>
   </div> 
+  @if(getVal() | async |json){
   <div class="menu-list-container"> 
       <button mat-icon-button class="menu-mobile" (click)="openModalCart()">
         <mat-icon matBadge={{totalItems}} >shopping_cart</mat-icon>
       </button>
-  </div>
+    </div>
+  }
 </mat-toolbar>
 
 
