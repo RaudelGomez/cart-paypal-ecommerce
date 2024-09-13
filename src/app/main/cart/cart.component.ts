@@ -47,7 +47,6 @@ export class CartComponent {
     this.calcTotalItems();
     this.itemCartPaypal();
     this.getModalCart();
-    console.log(this.$modalCart);
   }
 
   ngAfterViewInit(): void {

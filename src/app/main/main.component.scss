@@ -30,13 +30,17 @@
   bottom: 0;
   height: 95vh;
   width: 100%;
-  z-index: 100;
+  z-index: 150;
   @extend .d-center;
   background-color: rgba($color: $black, $alpha: 0.3);
 }
 
 .d-none{
   display:none !important;
+}
+
+.zIndex-10{
+  z-index: -10;
 }
 
 .modal-cart{

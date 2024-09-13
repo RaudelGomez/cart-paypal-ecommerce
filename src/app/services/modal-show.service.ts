@@ -11,7 +11,7 @@ export class ModalShowService {
   private modalData: any[] = [];
   private modalDataSubject: BehaviorSubject<any[]> = new BehaviorSubject<any[]>(this.modalData);
 
-  private showCartModal: boolean = false;
+  private showCartModal: boolean = true;
   private showCartModalSubject: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(this.showCartModal);
 
   constructor() { }
