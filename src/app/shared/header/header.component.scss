@@ -58,3 +58,9 @@
     display: block !important;
   }
 }
+
+@media (max-width: 400px){
+  .logo-app span{
+    font-size: 14px !important;
+  }
+}
